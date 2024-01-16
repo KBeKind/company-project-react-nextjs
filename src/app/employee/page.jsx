@@ -1,7 +1,7 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 import React from "react";
-import ProductDetails from "../components/ProductDetails";
+import FetchEmployee from "../components/FetchEmployee";
 
 const page = () => {
   const searchParams = useSearchParams();
@@ -9,7 +9,8 @@ const page = () => {
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
       <div>
-        <ProductDetails productId={id} />
+        <FetchEmployee employeeId={id} />
+        {/* <EditEmployee employeeId={id} /> */}
       </div>
     </main>
   );

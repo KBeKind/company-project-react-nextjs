@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import EditProduct from "./EditProduct";
 
 // http://localhost:5013/api/Product/1
 
@@ -21,14 +22,17 @@ const FetchProduct = ({ productId }) => {
     <div>
       {product.id ? (
         // Conditionally render product details if 'id' exists
-        <div>
-          <h2>Product Details</h2>
-          <p>ID: {product.id}</p>
-          <p>Name: {product.name}</p>
-          <p>Price: {product.price}</p>
-        </div>
+        <>
+          <div className="mx-8">
+            <p>ID: {product.id}</p>
+            <p>Name: {product.name}</p>
+            <p>Price: {product.price}</p>
+          </div>
+          <div className=" p-4 mt-8 border-solid border-2	border-slate-600 rounded-md bg-slate-800	">
+            <EditProduct product={product} />
+          </div>
+        </>
       ) : (
-        // Render a message if 'id' doesn't exist (product data not available)
         <p>Product information not available.</p>
       )}
     </div>
