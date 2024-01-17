@@ -57,9 +57,9 @@ const EditProduct = ({ product }) => {
     }
   };
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col items-center w-full">
       <p className="text-center text-lg mb-4">Edit Product Form</p>
-      <form onSubmit={handleSubmit} className="flex flex-col">
+      <form onSubmit={handleSubmit} className="flex flex-col items-center">
         <div className="mb-4">
           <label htmlFor="name">Name:</label>
           <input
@@ -85,7 +85,7 @@ const EditProduct = ({ product }) => {
           />
         </div>
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-3/4"
           type="submit"
         >
           Save Edited Product

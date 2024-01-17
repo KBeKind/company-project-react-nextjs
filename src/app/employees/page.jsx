@@ -1,11 +1,15 @@
 import React from "react";
 import FetchEmployees from "../components/FetchEmployees";
+import HomePageButton from "../components/buttons/HomePageButton";
 
 const page = () => {
   return (
-    <div>
+    <main className="flex min-h-screen flex-col items-center p-24">
       <FetchEmployees />
-    </div>
+      <div>
+        <HomePageButton />
+      </div>
+    </main>
   );
 };
 
