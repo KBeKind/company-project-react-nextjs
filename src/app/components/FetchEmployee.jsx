@@ -23,7 +23,7 @@ const FetchEmployee = ({ employeeId }) => {
       {employee.id ? (
         // Conditionally render product details if 'id' exists
         <div>
-          <h2>Product Details</h2>
+          <h2>Employee Details</h2>
           <p>ID: {employee.id}</p>
           <p>Name: {employee.name}</p>
           <p>Department: {employee.department}</p>
