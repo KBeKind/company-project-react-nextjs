@@ -1,5 +1,5 @@
 import React from "react";
-import FetchProducts from "../components/FetchProducts";
+import FetchProducts from "../components/product/FetchProducts";
 import HomePageButton from "../components/buttons/HomePageButton";
 
 const page = () => {

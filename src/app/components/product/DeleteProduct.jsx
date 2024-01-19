@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const DeleteProduct = ({ product }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -8,13 +9,14 @@ const DeleteProduct = ({ product }) => {
 
     if (showConfirmation) {
       try {
-        const response = await fetch(
-          `http://localhost:5013/api/Product/delete/${product.id}`,
+        const response = await axios.delete(
+          `https://localhost:5001/api/Product/delete/${product.id}`,
           {
-            method: "DELETE",
+            withCredentials: true,
           }
         );
-        if (response.ok) {
+
+        if (response.status === 200) {
           console.log("Product deleted successfully");
           window.location.href = "/product/deleteSuccess";
         } else {
@@ -27,6 +29,7 @@ const DeleteProduct = ({ product }) => {
       setShowConfirmation(true);
     }
   };
+
   return (
     <div className="flex flex-col items-center w-full">
       <button

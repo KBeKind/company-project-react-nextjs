@@ -1,7 +1,7 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 import React from "react";
-import ProductDetails from "../components/ProductDetails";
+import ProductDetails from "../components/product/ProductDetails";
 
 const page = () => {
   const searchParams = useSearchParams();

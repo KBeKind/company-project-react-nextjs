@@ -8,30 +8,39 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    console.log("Submitting login for:", username); // Log username
     try {
       const response = await axios.post(
-        "http://localhost:5013/api/Identity/login",
+        "https://localhost:5001/api/Identity/ReactLogin",
         {
           UserName: username,
           Password: password,
+        },
+        {
+          withCredentials: true,
         }
       );
 
-      // Assuming the token is in response.data.token
-      // Store the token in localStorage
-      localStorage.setItem("authToken", response.data.token);
+      console.log("Axios response:", response);
+      // Check if response has data and is in JSON format
+      // if (response.data && typeof response.data === "object") {
+      //   console.log("Login response:", response.data);
+      // }
 
-      // Redirect user to another page or update the state to reflect the user is logged in
       console.log("Login successful");
+      // Redirect or update state here, e.g., redirect to home page
+      // window.location.href = "/products"; // Redirect to home page
     } catch (error) {
-      console.error("Login error", error.response);
-      // Handle login error
+      console.error("Login error occurred:", error);
+      //console.error("Login error", error.response);
+      if (error.response && error.response.data) {
+        //console.error("Backend error details:", error.response.data);
+      }
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="text-slate-700">
       <input
         type="text"
         value={username}

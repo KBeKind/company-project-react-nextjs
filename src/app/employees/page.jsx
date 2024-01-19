@@ -1,5 +1,5 @@
 import React from "react";
-import FetchEmployees from "../components/FetchEmployees";
+import FetchEmployees from "../components/employee/FetchEmployees";
 import HomePageButton from "../components/buttons/HomePageButton";
 
 const page = () => {

@@ -2,18 +2,27 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-
-// http://localhost:5013/api/Employee
+import axios from "axios";
 
 const FetchEmployees = () => {
   const [employees, setEmployees] = useState([]);
+
   useEffect(() => {
-    fetch("http://localhost:5013/api/Employee")
-      .then((response) => response.json())
-      .then((data) => {
-        setEmployees(data);
-      })
-      .catch((error) => console.log(error.message));
+    const fetchEmployees = async () => {
+      try {
+        const response = await axios.get(
+          "https://localhost:5001/api/Employee",
+          {
+            withCredentials: true,
+          }
+        );
+        setEmployees(response.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        // Handle errors (e.g., show an error message)
+      }
+    };
+    fetchEmployees();
   }, []);
   return (
     <div>
