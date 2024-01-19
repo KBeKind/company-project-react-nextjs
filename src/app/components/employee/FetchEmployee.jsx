@@ -1,21 +1,26 @@
 "use client";
 import React, { useState, useEffect } from "react";
-
-// http://localhost:5013/api/Employee/1
+import axios from "axios";
 
 const FetchEmployee = ({ employeeId }) => {
   const [employee, setEmployee] = useState([]);
 
   useEffect(() => {
-    if (employeeId) {
-      fetch(`http://localhost:5013/api/Employee/${employeeId}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setEmployee(data);
-          console.log(data);
-        })
-        .catch((error) => console.log(error.message));
-    }
+    const fetchEmployee = async () => {
+      try {
+        const response = await axios.get(
+          `https://localhost:5001/api/Employee/${employeeId}`,
+          {
+            withCredentials: true,
+          }
+        );
+        setEmployee(response.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        // Handle errors (e.g., show an error message)
+      }
+    };
+    fetchEmployee();
   }, []);
 
   return (

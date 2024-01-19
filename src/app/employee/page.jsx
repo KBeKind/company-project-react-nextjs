@@ -1,7 +1,7 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 import React from "react";
-import FetchEmployee from "../components/FetchEmployee";
+import FetchEmployee from "../components/employee/FetchEmployee";
 
 const page = () => {
   const searchParams = useSearchParams();

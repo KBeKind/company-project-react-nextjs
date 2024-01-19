@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const EditProduct = ({ product }) => {
   const [formData, setFormData] = useState({
@@ -32,21 +33,21 @@ const EditProduct = ({ product }) => {
       price: formData.price,
     };
 
-    // Send the PUT request to the API
+    // Send the PUT request to the API using Axios
     try {
-      const response = await fetch(
-        `http://localhost:5013/api/Product/update/${product.id}`,
+      const response = await axios.put(
+        `https://localhost:5001/api/Product/update/${product.id}`,
+        payload,
         {
-          method: "PUT",
           headers: {
             accept: "*/*",
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(payload),
+          withCredentials: true,
         }
       );
 
-      if (response.ok) {
+      if (response.status === 200) {
         console.log("Product updated successfully");
         window.location.reload();
       } else {
@@ -56,6 +57,7 @@ const EditProduct = ({ product }) => {
       console.error("Error updating product:", error);
     }
   };
+
   return (
     <div className="flex flex-col items-center w-full">
       <p className="text-center text-lg mb-4">Edit Product Form</p>

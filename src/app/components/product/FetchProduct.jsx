@@ -1,24 +1,29 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import EditProduct from "./EditProduct";
-import Link from "next/link";
 import DeleteProduct from "./DeleteProduct";
-import AllProductsButton from "./buttons/AllProductsButton";
-
-// http://localhost:5013/api/Product/1
+import AllProductsButton from "../buttons/AllProductsButton";
+import axios from "axios";
 
 const FetchProduct = ({ productId }) => {
   const [product, setProduct] = useState([]);
 
   useEffect(() => {
-    if (productId) {
-      fetch(`http://localhost:5013/api/Product/${productId}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setProduct(data);
-        })
-        .catch((error) => console.log(error.message));
-    }
+    const fetchProduct = async () => {
+      try {
+        const response = await axios.get(
+          `https://localhost:5001/api/Product/${productId}`,
+          {
+            withCredentials: true,
+          }
+        );
+        setProduct(response.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        // Handle errors (e.g., show an error message)
+      }
+    };
+    fetchProduct();
   }, []);
 
   return (

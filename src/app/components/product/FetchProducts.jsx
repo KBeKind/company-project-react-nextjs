@@ -2,20 +2,24 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-
-// http://localhost:5013/api/Product
-// http://localhost:5013/api/Product/1
-// http://localhost:5013/api/Product/price/search?price=20
+import axios from "axios";
 
 const FetchProducts = () => {
   const [products, setProducts] = useState([]);
+
   useEffect(() => {
-    fetch("http://localhost:5013/api/Product")
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts(data);
-      })
-      .catch((error) => console.log(error.message));
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get("https://localhost:5001/api/Product", {
+          withCredentials: true,
+        });
+        setProducts(response.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        // Handle errors (e.g., show an error message)
+      }
+    };
+    fetchProducts();
   }, []);
   return (
     <div>
