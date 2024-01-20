@@ -4,6 +4,7 @@ import WelcomeHeader from "./components/WelcomeHeader";
 import LinkToDotNetPage from "./components/LinkToDotNetPage";
 import AllProductsButton from "./components/buttons/AllProductsButton";
 import AllEmployeesButton from "./components/buttons/AllEmployeesButton";
+import LoginPageButton from "./components/buttons/LoginPageButton";
 
 export default function Home() {
   return (
@@ -15,6 +16,9 @@ export default function Home() {
         </div>
         <div className="mt-4">
           <AllEmployeesButton />
+        </div>
+        <div className="mt-4">
+          <LoginPageButton />
         </div>
         <div className="mt-10">
           <LinkToDotNetPage />
