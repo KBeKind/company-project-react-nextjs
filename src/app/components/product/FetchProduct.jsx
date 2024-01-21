@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import EditProduct from "./EditProduct";
 import DeleteProduct from "./DeleteProduct";
-import AllProductsButton from "../buttons/AllProductsButton";
+import AllProductsButton from "../button-links/AllProductsButton";
 import axios from "axios";
 
 const FetchProduct = ({ productId }) => {
