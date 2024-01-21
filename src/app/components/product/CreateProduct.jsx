@@ -9,14 +9,6 @@ const CreateProduct = () => {
     price: "",
   });
 
-  // Set the initial form data to the existing product values
-  // React.useEffect(() => {
-  //   setFormData({
-  //     name: product.name,
-  //     price: product.price,
-  //   });
-  // }, [product]);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -28,16 +20,14 @@ const CreateProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Create the PUT request payload
     const payload = {
       name: formData.name,
       price: formData.price,
     };
 
-    // Send the PUT request to the API using Axios
     try {
-      const response = await axios.put(
-        `https://localhost:5001/api/Product/update/${product.id}`,
+      const response = await axios.post(
+        `https://localhost:5001/api/Product`,
         payload,
         {
           headers: {
@@ -48,14 +38,14 @@ const CreateProduct = () => {
         }
       );
 
-      if (response.status === 200) {
-        console.log("Product updated successfully");
-        window.location.reload();
+      if (response.status === 201) {
+        console.log("Product created successfully");
+        window.location.href = "/products";
       } else {
-        console.error("Failed to update product");
+        console.error("Failed to create product");
       }
     } catch (error) {
-      console.error("Error updating product:", error);
+      console.error("Error creating product:", error);
     }
   };
 

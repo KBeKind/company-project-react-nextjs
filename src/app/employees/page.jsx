@@ -1,6 +1,6 @@
 import React from "react";
 import FetchEmployees from "../components/employee/FetchEmployees";
-import HomePageButton from "../components/buttons/HomePageButton";
+import HomePageButton from "../components/button-links/HomePageButton";
 
 const page = () => {
   return (

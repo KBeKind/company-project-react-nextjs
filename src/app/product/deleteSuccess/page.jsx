@@ -1,5 +1,5 @@
-import AllProductsButton from "@/app/components/buttons/AllProductsButton";
-import HomePageButton from "@/app/components/buttons/HomePageButton";
+import AllProductsButton from "@/app/components/button-links/AllProductsButton";
+import HomePageButton from "@/app/components/button-links/HomePageButton";
 import React from "react";
 
 const page = () => {
