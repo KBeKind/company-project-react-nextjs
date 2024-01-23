@@ -29,7 +29,6 @@ const FetchProduct = ({ productId }) => {
   return (
     <div>
       {product.id ? (
-        // Conditionally render product details if 'id' exists
         <>
           <div className="p-4 border-solid border-2 border-slate-600 rounded-md bg-slate-800 w-full flex flex-col items-center">
             <p className="text-2xl text-center mb-2">ProductDetails</p>

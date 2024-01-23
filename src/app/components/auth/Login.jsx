@@ -22,19 +22,13 @@ const Login = () => {
       );
 
       console.log("Axios response:", response);
-      // Check if response has data and is in JSON format
-      // if (response.data && typeof response.data === "object") {
-      //   console.log("Login response:", response.data);
-      // }
 
       console.log("Login successful");
 
       window.location.href = "/";
     } catch (error) {
       console.error("Login error occurred:", error);
-      //console.error("Login error", error.response);
       if (error.response && error.response.data) {
-        //console.error("Backend error details:", error.response.data);
       }
     }
   };

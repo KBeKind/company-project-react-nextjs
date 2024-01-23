@@ -1,3 +1,5 @@
+"use client";
+
 import CreateProduct from "@/app/components/product/CreateProduct";
 import React from "react";
 
