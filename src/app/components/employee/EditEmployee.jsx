@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import axios from "axios";
 
-const EditProduct = ({ product }) => {
+const EditEmployee = ({ employee }) => {
   const [formData, setFormData] = useState({
     name: "",
-    price: "",
+    department: "",
+    city: "",
   });
 
-  // Set the initial form data to the existing product values
   React.useEffect(() => {
     setFormData({
-      name: product.name,
-      price: product.price,
+      name: employee.name,
+      department: employee.department,
+      city: employee.city,
     });
-  }, [product]);
+  }, [employee]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,17 +28,16 @@ const EditProduct = ({ product }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Create the PUT request payload
     const payload = {
-      id: product.id,
+      id: employee.id,
       name: formData.name,
-      price: formData.price,
+      department: formData.department,
+      city: formData.city,
     };
 
-    // Send the PUT request to the API using Axios
     try {
       const response = await axios.put(
-        `https://localhost:5001/api/Product/update/${product.id}`,
+        `https://localhost:5001/api/Employee/update/${employee.id}`,
         payload,
         {
           headers: {
@@ -48,19 +49,19 @@ const EditProduct = ({ product }) => {
       );
 
       if (response.status === 200) {
-        console.log("Product updated successfully");
+        console.log("Employee updated successfully");
         window.location.reload();
       } else {
-        console.error("Failed to update product");
+        console.error("Failed to update employee");
       }
     } catch (error) {
-      console.error("Error updating product:", error);
+      console.error("Error updating employee:", error);
     }
   };
 
   return (
     <div className="flex flex-col items-center w-full">
-      <p className="text-center text-lg mb-4">Edit Product Form</p>
+      <p className="text-center text-lg mb-4">Edit Employee Form</p>
       <form onSubmit={handleSubmit} className=" w-full max-w-md items-center">
         <div className="mb-4">
           <label htmlFor="name">Name:</label>
@@ -68,21 +69,33 @@ const EditProduct = ({ product }) => {
             type="text"
             id="name"
             name="name"
-            placeholder={product.name}
+            placeholder={employee.name}
             className="w-full p-1 border rounded text-slate-500"
             value={formData.name}
             onChange={handleChange}
           />
         </div>
-        <div className="mb-4">
-          <label htmlFor="price">Price:</label>
+        <div className="mb-4 ">
+          <label htmlFor="department">Department:</label>
           <input
-            type="number"
-            id="price"
-            name="price"
-            placeholder={product.price}
+            type="text"
+            id="department"
+            name="department"
+            placeholder={employee.department}
             className="w-full p-1 border rounded text-slate-500"
-            value={formData.price}
+            value={formData.department}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="city">City:</label>
+          <input
+            type="text"
+            id="city"
+            name="city"
+            placeholder={employee.city}
+            className="w-full p-1 border rounded text-slate-500"
+            value={formData.city}
             onChange={handleChange}
           />
         </div>
@@ -91,7 +104,7 @@ const EditProduct = ({ product }) => {
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-3/4"
             type="submit"
           >
-            Save Edited Product
+            Save Edited Employee
           </button>
         </div>
       </form>
@@ -99,4 +112,4 @@ const EditProduct = ({ product }) => {
   );
 };
 
-export default EditProduct;
+export default EditEmployee;
