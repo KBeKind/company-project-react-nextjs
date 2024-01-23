@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const DeleteEmployee = ({ product }) => {
+const DeleteEmployee = ({ employee }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -10,7 +10,7 @@ const DeleteEmployee = ({ product }) => {
     if (showConfirmation) {
       try {
         const response = await axios.delete(
-          `https://localhost:5001/api/Employee/delete/${product.id}`,
+          `https://localhost:5001/api/Employee/delete/${employee.id}`,
           {
             withCredentials: true,
           }

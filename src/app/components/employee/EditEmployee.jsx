@@ -62,7 +62,6 @@ const EditEmployee = ({ employee }) => {
   return (
     <div className="flex flex-col items-center w-full">
       <p className="text-center text-lg mb-4">Edit Employee Form</p>
-      {/* <form onSubmit={handleSubmit} className="flex flex-col items-center"> */}
       <form onSubmit={handleSubmit} className=" w-full max-w-md items-center">
         <div className="mb-4">
           <label htmlFor="name">Name:</label>

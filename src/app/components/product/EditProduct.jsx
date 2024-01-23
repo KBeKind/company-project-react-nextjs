@@ -61,7 +61,7 @@ const EditProduct = ({ product }) => {
   return (
     <div className="flex flex-col items-center w-full">
       <p className="text-center text-lg mb-4">Edit Product Form</p>
-      <form onSubmit={handleSubmit} className="flex flex-col items-center">
+      <form onSubmit={handleSubmit} className=" w-full max-w-md items-center">
         <div className="mb-4">
           <label htmlFor="name">Name:</label>
           <input
@@ -86,12 +86,14 @@ const EditProduct = ({ product }) => {
             onChange={handleChange}
           />
         </div>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-3/4"
-          type="submit"
-        >
-          Save Edited Product
-        </button>
+        <div className="w-full flex justify-center">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-3/4"
+            type="submit"
+          >
+            Save Edited Product
+          </button>
+        </div>
       </form>
     </div>
   );
